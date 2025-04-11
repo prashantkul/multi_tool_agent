@@ -17,9 +17,10 @@ from .routing_tools import route_to_agent  # Removed handle_agent_launch if not 
 # Use standard Agent for sequential tool execution
 policy_agent = Agent(
     name=config.POLICY_AGENT_NAME,
-    model=config.DEFAULT_AGENT_MODEL, 
-    description="Agent to help customers get insurance quotes and purchase policies",
-    instruction="I can help you get insurance quotes and purchase a policy. I can provide quotes for auto, home, health, and life insurance.",
+    model=config.DEFAULT_AGENT_MODEL,
+    description="Agent to help customers get insurance quotes and purchase policies. It can also help with changes to existing policies.",
+    instruction=f"""I can help you get insurance quotes and purchase a policy. I can provide quotes for auto, home, health, and life insurance. 
+            If you'd like to make changes to an existing policy, I can help as well.""",
     tools=[get_insurance_quotes, purchase_policy],
 )
 
